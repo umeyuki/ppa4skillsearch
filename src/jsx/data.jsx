@@ -107,7 +107,7 @@ exports.Skills =
 	},
 	{
 		label: '脅威の切れ味',
-		value: 'kyouinokireaji',
+		value: 'kyoinokireaji',
 		gold: true
 	},
 	{
@@ -206,6 +206,11 @@ exports.Skills =
 		gold: false
 	},
 	{
+		label:  '粘り打ち',
+		value:  'nebariuti',
+		gold: false
+	},
+	{
 		label:  '固め打ち',
 		value:  'katameuti',
 		gold: false
@@ -233,6 +238,11 @@ exports.Skills =
 	{
 		label:  '代打',
 		value:  'daida',
+		gold: false
+	},
+	{
+		label:  'ゲッツー崩し',
+		value:  'gettukuzusi',
 		gold: false
 	},
 	{
@@ -291,6 +301,11 @@ exports.Skills =
 		gold: false
 	},
 	{
+		label:  'レーザービーム',
+		value:  'rezabimu',
+		gold: false
+	},
+	{
 		label:  '高速チャージ',
 		value:  'kousokuchaji',
 		gold: false
@@ -343,6 +358,11 @@ exports.Skills =
 	{
 		label:  '打球反応',
 		value:  'dakyuhanno',
+		gold: false
+	},
+	{
+		label:  '根性',
+		value:  'konjo',
 		gold: false
 	},
 	{
@@ -462,72 +482,120 @@ exports.Members =
   {
     name: 'アンヌ',
     roma: 'annu',
-		fork: true,
-		taipinti: true,
-		dakyuhanno: true,
-    traning: '球速',
-    skills: ['フォーク', '対ピンチ', '打球反応'],
-		type: 1,
-		match_bonus: false
+		skills: {
+			kaibutukyui: true,
+			omoitama: true,
+			fork: true,
+			taipinti: true,
+			dakyuhanno: true,
+			konjo: true,
+			pawahitta: true,
+			kegasinikusa: true,
+			gyakkyo: true,
+			sayonaraotoko: true
+		},
+		type: 1
   },
   {
     name: '明星雪華',
     roma: 'akehosisetuka',
-    traning: false,
-    skills: [],
-    special_skills: ['一球入魂', '脅威の切れ味'],
-    event_order: 1,
-    girl_friend: true,
+		skills: {
+			kensei: true,
+			nobi: true,
+			nigetama: true,
+			siriagari: true,
+			dakyuhanno: true,
+			ririsu: true,
+			taikyodasha: true,
+			kire: true,
+			kyoinokireaji: true,
+			kankyu: true,
+			utareduyosa: true,
+			konjo: true,
+			omoitama: true,
+			datusansin: true,
+			taipinti: true,
+			tousi: true,
+			banto: true,
+			soukyu: true,
+			gettukuzusi: true,
+			manruiotoko: true,
+			syokyu: true,
+			sayonaraotoko: true,
+			taiesu: true,
+			ikkyunyukon: true,
+			nagasiuti: true,
+			igaisei: true,
+			nebariuti: true,
+			gyakkyo: true,
+			puruhitta: true,
+			koukakudahou: true,
+			katameuti: true,
+			chansu: true,
+			pawahitta: true
+		},
 		type: 2,
-		match_bonus: false
   },
   {
     name: '阿畑やすし',
     roma: 'abatayasusi',
-    traning: '変化球',
-    skills: [],
-    special_skills: ['オリジナル変化球'],
-    event_order: 0,
-		type: 0,
-		match_bonus: false
+		skills: {
+			ririsu: true,
+			kankyu: true,
+			nigetama: true,
+			nebariuti: true,
+			kegasinikusa: true,
+			ibusigin: true,
+			nagasiuti: true
+		},
+		type: 0
   },
   {
     name: '猪狩進',
     roma: 'ikarisusumu',
-    traning: '守備',
-    skills: ['守備', 'アベレージヒッター', '広角打法', 'キャッチャー'],
-    special_skills: ['球界の頭脳'],
-    event_order: 1,
+		skills: {
+			siriagari: true,
+			omoitama: true,
+			ririsu: true,
+			sayonaraotoko: true,
+			nebariuti: true,
+			aberagehitta: true,
+			kyuukainozuno: true,
+			katameuti: true,
+			kyaccha: true,
+			koukakudahou: true
+		},
 		type: 0,
-		match_bonus: false
   },
   {
     name: '猪狩守',
     roma: 'ikarimamoru',
-    traning: '球速',
-    skills: ['球速', 'ピンチ', 'リリース'],
-    special_skills: ['ライジングキャノン', 'or','ライジングショット'],
-    event_order: 1,
+		skills: {
+			taipinti:    '【練習】【イベント: 慌てるな】',
+			ririsu:      '【練習】【イベント: 心得】',
+			nobi:        '【イベント: ライジングキャノン】【イベント: セレブなレストラン】',
+			rezabimu:    '【イベント: ライジングキャノン】',
+			chansu:      '【イベント: 慌てるな】',
+		},
 		type: 0,
-		match_bonus: false
   },
   {
     name: '大鐘餅太郎',
     roma: 'ookanemotitaro',
-    traning: '守備',
-    skills: ['粘り打ち', 'ハイボールヒッター', '初級'],
-    special_skills: ['左キラー'],
-    event_order: 1,
+    skills: {
+			konjo:      '【イベント: オッサンゲーマー: オッサンゲーマー餅太郎】',
+			taipinti:   '【イベント: 大鐘の恋】',
+			omoitama:   '【イベント: 越えて、越えて、私】',
+			hidarikira: '【イベント: 越えて、越えて、私】',
+			igaisei:    '【イベント: オッサンゲーマー: オッサンゲーマー餅太郎】【イベント: 大鐘の恋】',
+			pawahitta:  '【イベント: 越えて、越えて、私】'
+		},
 		type: 0,
-		match_bonus: false
   },
   {
     name: '橘みずき',
     roma: 'tatibanamizuki',
-    traning: 'コントロール',
     skills: ['クロスファイアー'],
-    special_skills: ['クレッセントムーン'],
-    event_order: 0,
 		type: 1,
 		match_bonus: false
   },
