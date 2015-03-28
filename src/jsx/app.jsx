@@ -12,16 +12,14 @@ var App = React.createClass({
   onChange: function (value) {
 		var has_skill_members = [];
     for (var i=0; i < DATA['Members'].length; i++) {
-			if (member[value]) {
-				has_skill_members.push(member)
+			if (DATA['Members'][i][value]) {
+				this.setState({ members: this.state.members.concat([DATA['Members'][i][value]]) } );
 			}
     }
-    this.setState({ members: has_skill_members } );
   },
   render: function() {
     var cx = React.addons.classSet;
-    return <section className="pure-g">
-		Hello
+    return <section>
    	<Select options={DATA['Skills']} onChange={this.onChange} />
     <section className="pure-u-1-1">
    		  {this.state.members.map(function(member) {

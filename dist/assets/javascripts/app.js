@@ -13,16 +13,14 @@ var App = React.createClass({displayName: "App",
   onChange: function (value) {
 		var has_skill_members = [];
     for (var i=0; i < DATA['Members'].length; i++) {
-			if (member[value]) {
-				has_skill_members.push(member)
+			if (DATA['Members'][i][value]) {
+				this.setState({ members: this.state.members.concat([DATA['Members'][i][value]]) } );
 			}
     }
-    this.setState({ members: has_skill_members } );
   },
   render: function() {
     var cx = React.addons.classSet;
-    return React.createElement("section", {className: "pure-g"}, 
-		"Hello", 
+    return React.createElement("section", null, 
    	React.createElement(Select, {options: DATA['Skills'], onChange: this.onChange}), 
     React.createElement("section", {className: "pure-u-1-1"}, 
    		  this.state.members.map(function(member) {
@@ -34576,38 +34574,458 @@ module.exports = require('./lib/React');
 exports.Skills =
 [
 	{
-		value: '',
-		label:  '',
+		label: 'アーチスト',
+		value: 'artist',
 		gold: true
 	},
 	{
-		value: '',
-		label:  '',
+		label: '安打製造機',
+		value: 'andaseizoki',
 		gold: true
 	},
 	{
-		value: '',
-		label:  '',
+		label: '勝負師',
+		value: 'syobusi',
 		gold: true
 	},
 	{
-		value: '',
-		label:  '',
+		label: '左キラー',
+		value: 'hidarikira',
 		gold: true
 	},
 	{
-		value: '',
-		label:  '',
+		label: '芸術的流し打ち',
+		value: 'geijyututekinagasiuti',
 		gold: true
 	},
 	{
-		value:  'fork',
-		label:  'フォーク',
+		label: '魔術師',
+		value:  'majyutusi',
+		gold: true
+	},
+	{
+		label: '伝説のサヨナラ男',
+		value: 'densetunosayonaraotoko',
+		gold: true
+	},
+	{
+		label: '代打の神様',
+		value: 'daidanokamisama',
+		gold: true
+	},
+	{
+		label: '一球入魂',
+		value: 'ikkyunyukon',
+		gold: true
+	},
+	{
+		label: '重戦車',
+		value: 'jyusensha',
+		gold: true
+	},
+	{
+		label: '高速ベースラン',
+		value:  'kousokubesuran',
+		gold: true
+	},
+	{
+		label: '電光石火',
+		value: 'denkosekka',
+		gold: true
+	},
+	{
+		label: '鉄人',
+		value: 'tetujin',
+		gold: true
+	},
+	{
+		label: '切り込み隊長',
+		value: 'kirikomitaicho',
+		gold: true
+	},
+	{
+		label: '高速レーザー',
+		value: 'kousokureza',
+		gold: true
+	},
+	{
+		label: '球界の頭脳',
+		value: 'kyuukainozuno',
+		gold: true
+	},
+	{
+		label: 'ささやき戦術',
+		value: 'sasayakisenjyutu',
+		gold: true
+	},
+	{
+		label: '怪童',
+		value: 'kaido',
+		gold: true
+	},
+	{
+		label: '怪物球威',
+		value: 'kaibutukyui',
+		gold: true
+	},
+	{
+		label: '鉄の壁',
+		value: 'tetunokabe',
+		gold: true
+	},
+	{
+		label: '気迫ヘッド',
+		value: 'kihakuheddo',
+		gold: true
+	},
+	{
+		label: '脅威の切れ味',
+		value: 'kyouinokireaji',
+		gold: true
+	},
+	{
+		label: 'ストレート送球',
+		value: 'sutoratosoukyu',
+		gold: true
+	},
+	{
+		label: '不屈の魂',
+		value: 'fukutunotamasi',
+		gold: true
+	},
+	{
+		label: '強心臓',
+		value: 'kyosinzo',
+		gold: true
+	},
+	{
+		label: 'ドクターK',
+		value: 'dokutak',
+		gold: true
+	},
+	{
+		label: '精密機械',
+		value: 'seimitukikai',
+		gold: true
+	},
+	{
+		label: '鉄腕',
+		value: 'tetuwan',
+		gold: true
+	},
+	{
+		label:  'チャンス',
+		value:  'chansu',
 		gold: false
 	},
 	{
-		value:  'pinch',
+		label:  '対左投手',
+		value:  'taihidaritoushu',
+		gold: false
+	},
+	{
+		label:  '盗塁',
+		value:  'tourui',
+		gold: false
+	},
+	{
+		label:  '走塁',
+		value:  'sourui',
+		gold: false
+	},
+	{
+		label:  '送球',
+		value:  'soukyu',
+		gold: false
+	},
+	{
+		label:  'ケガしにくさ',
+		value:  'kegasinikusa',
+		gold: false
+	},
+	{
+		label:  'キャッチャー',
+		value:  'kyaccha',
+		gold: false
+	},
+	{
+		label:  'アベレージヒッター',
+		value:  'aberagehitta',
+		gold: false
+	},
+	{
+		label:  'パワーヒッター',
+		value:  'pawahitta',
+		gold: false
+	},
+	{
+		label:  'プルヒッター',
+		value:  'puruhitta',
+		gold: false
+	},
+	{
+		label:  '広角打法',
+		value:  'koukakudahou',
+		gold: false
+	},
+	{
+		label:  '内野安打',
+		value:  'naiyaanda',
+		gold: false
+	},
+	{
+		label:  '流し打ち',
+		value:  'nagasiuti',
+		gold: false
+	},
+	{
+		label:  '固め打ち',
+		value:  'katameuti',
+		gold: false
+	},
+	{
+		label:  '悪球打ち',
+		value:  'akukyuuti',
+		gold: false
+	},
+	{
+		label:  '意外性',
+		value:  'igaisei',
+		gold: false
+	},
+	{
+		label:  'バント',
+		value:  'banto',
+		gold: false
+	},
+	{
+		label:  '初級',
+		value:  'syokyu',
+		gold: false
+	},
+	{
+		label:  '代打',
+		value:  'daida',
+		gold: false
+	},
+	{
+		label:  'チャンスメーカー',
+		value:  'chansumeka',
+		gold: false
+	},
+	{
+		label:  'ヘッドスライティング',
+		value:  'heddosuraithing',
+		gold: false
+	},
+	{
+		label:  '体当り',
+		value:  'taiatari',
+		gold: false
+	},
+	{
+		label:  '満塁男',
+		value:  'manruiotoko',
+		gold: false
+	},
+	{
+		label:  'サヨナラ男',
+		value:  'sayonaraotoko',
+		gold: false
+	},
+	{
+		label:  '逆境',
+		value:  'gyakkyo',
+		gold: false
+	},
+	{
+		label:  'ハイボールヒッター',
+		value:  'haiboruhitta',
+		gold: false
+	},
+	{
+		label:  'ローボールヒッター',
+		value:  'roboruhitta',
+		gold: false
+	},
+	{
+		label:  '対エース',
+		value:  'taiesu',
+		gold: false
+	},
+	{
+		label:  'ムード',
+		value:  'mudo',
+		gold: false
+	},
+	{
+		label:  '守備職人',
+		value:  'shubishokunin',
+		gold: false
+	},
+	{
+		label:  '高速チャージ',
+		value:  'kousokuchaji',
+		gold: false
+	},
+	{
+		label:  'ブロック',
+		value:  'burokku',
+		gold: false
+	},
+	{
+		label:  'ゲッツー崩し',
+		value:  'gettukuzusi',
+		gold: false
+	},
+	{
+		label:  'いぶし銀',
+		value:  'ibusigin',
+		gold: false
+	},
+	{
+		label:  '打たれ強さ',
+		value:  'utareduyosa',
+		gold: false
+	},
+	{
 		label:  '対ピンチ',
+		value:  'taipinti',
+		gold: false
+	},
+	{
+		label:  '対左打者',
+		value:  'taihidaridasha',
+		gold: false
+	},
+	{
+		label:  'ノビ',
+		value:  'nobi',
+		gold: false
+	},
+	{
+		label:  'クイック',
+		value:  'kuikku',
+		gold: false
+	},
+	{
+		label:  'キレ',
+		value:  'kire',
+		gold: false
+	},
+	{
+		label:  '打球反応',
+		value:  'dakyuhanno',
+		gold: false
+	},
+	{
+		label:  '牽制',
+		value:  'kensei',
+		gold: false
+	},
+	{
+		label:  '緩急',
+		value:  'kankyu',
+		gold: false
+	},
+	{
+		label:  'ポーカーフェイス',
+		value:  'pokafaisu',
+		gold: false
+	},
+	{
+		label:  '闘志',
+		value:  'tousi',
+		gold: false
+	},
+	{
+		label:  '低め',
+		value:  'hikume',
+		gold: false
+	},
+	{
+		label:  '重い球',
+		value:  'omoitama',
+		gold: false
+	},
+	{
+		label:  '尻上がり',
+		value:  'siriagari',
+		gold: false
+	},
+	{
+		label:  '根性',
+		value:  'konjyo',
+		gold: false
+	},
+	{
+		label:  'リリース',
+		value:  'ririsu',
+		gold: false
+	},
+	{
+		label:  '球持ち',
+		value:  'tamamoti',
+		gold: false
+	},
+	{
+		label:  '奪三振',
+		value:  'datusansin',
+		gold: false
+	},
+	{
+		label:  'ジャイロボール',
+		value:  'jyairoboru',
+		gold: false
+	},
+	{
+		label:  '逃げ球',
+		value:  'nigetama',
+		gold: false
+	},
+	{
+		label:  '勝ち運',
+		value:  'katiun',
+		gold: false
+	},
+	{
+		label:  '対強打者',
+		value:  'taikyodasha',
+		gold: false
+	},
+	{
+		label:  'クロスファイヤー',
+		value:  'kurosufaiya',
+		gold: false
+	},
+	{
+		label:  'ミート',
+		value:  'mito',
+		gold: false
+	},
+	{
+		label:  '肩力',
+		value:  'kataryoku',
+		gold: false
+	},
+	{
+		label:  '守備力',
+		value:  'shubiryoku',
+		gold: false
+	},
+	{
+		label:  '球速',
+		value:  'kyusoku',
+		gold: false
+	},
+	{
+		label:  'コントロール',
+		value:  'kontororu',
+		gold: false
+	},
+	{
+		label:  'フォーク',
+		value:  'fork',
 		gold: false
 	}
 ];
@@ -34618,8 +35036,8 @@ exports.Members =
     name: 'アンヌ',
     roma: 'annu',
 		fork: true,
-		pinchi: true,
-		dakyuhanno: nil,
+		taipinti: true,
+		dakyuhanno: true,
     traning: '球速',
     skills: ['フォーク', '対ピンチ', '打球反応'],
 		type: 1,
@@ -34627,7 +35045,7 @@ exports.Members =
   },
   {
     name: '明星雪華',
-    roma: 'akehoshisetuka',
+    roma: 'akehosisetuka',
     traning: false,
     skills: [],
     special_skills: ['一球入魂', '脅威の切れ味'],
@@ -34638,7 +35056,7 @@ exports.Members =
   },
   {
     name: '阿畑やすし',
-    roma: 'abatayasushi',
+    roma: 'abatayasusi',
     traning: '変化球',
     skills: [],
     special_skills: ['オリジナル変化球'],
@@ -34668,7 +35086,7 @@ exports.Members =
   },
   {
     name: '大鐘餅太郎',
-    roma: 'ookanemochitaro',
+    roma: 'ookanemotitaro',
     traning: '守備',
     skills: ['粘り打ち', 'ハイボールヒッター', '初級'],
     special_skills: ['左キラー'],
@@ -34678,7 +35096,7 @@ exports.Members =
   },
   {
     name: '橘みずき',
-    roma: 'tachibanamizuki',
+    roma: 'tatibanamizuki',
     traning: 'コントロール',
     skills: ['クロスファイアー'],
     special_skills: ['クレッセントムーン'],
@@ -34708,7 +35126,7 @@ exports.Members =
   },
   {
     name: '山口賢',
-    roma: 'yamaguchisatoshi',
+    roma: 'yamagutisatosi',
     traning: '変化球',
     skills: ['対ピンチ', '勝ち運'],
     special_skills: ['強新三'],
@@ -34748,7 +35166,7 @@ exports.Members =
   },
   {
     name: '佐久間博',
-    roma: 'sakumahiroshi',
+    roma: 'sakumahirosi',
     traning: '打撃',
     skills: ['アベレージヒッター', '内野安打', '流し打ち'],
     special_skills: ['芸術的流し打ち'],
@@ -34779,7 +35197,7 @@ exports.Members =
   },
   {
     name: '蛇島桐人',
-    roma: 'hebishimakirito',
+    roma: 'hebisimakirito',
     traning: '守備',
     skills: ['安定感', 'ローボールヒッター', '守備職人', 'ムード'],
     special_skills: ['魔術師'],
@@ -34799,7 +35217,7 @@ exports.Members =
   },
   {
     name: '美藤千尋',
-    roma: 'bitochihiro',
+    roma: 'bitotihiro',
     traning: '打撃',
     skills: ['アベレージヒッター', '粘り打ち', '逆境', 'チャンス'],
     special_skills: ['安打製造機'],
@@ -34809,7 +35227,7 @@ exports.Members =
   },
   {
     name: '川星ほむら',
-    roma: 'kawahoshihomura',
+    roma: 'kawahosihomura',
     traning: '走塁',
     skills: ['体当たり', 'ムード', 'チャンス', '固め打ち', '内野安打', '意外性', 'いぶし銀', 'ヘッドスライティング'],
     special_skills: ['気迫ヘッド'],
@@ -34879,7 +35297,7 @@ exports.Members =
   },
   {
     name: '星井スバル',
-    roma: 'hoshiisubaru',
+    roma: 'hosiisubaru',
     traning: '変化球',
     skills: ['コントロール', '尻上がり', '逃げ球'],
     special_skills: ['スタードライブ'],
@@ -34929,7 +35347,7 @@ exports.Members =
   },
   {
     name: '烏丸剛充',
-    roma: 'karasumatakemitsu',
+    roma: 'karasumatakemitu',
     traning: 'スタミナ',
     skills: ['ノビ', '打球反応'],
     special_skills: ['不屈の魂'],
@@ -34939,7 +35357,7 @@ exports.Members =
   },
   {
     name: '春野千優',
-    roma: 'harunochiyu',
+    roma: 'harunotiyu',
     traning: false,
     skills: [],
     special_skills: ['鉄人', '走者釘付'],
@@ -34959,7 +35377,7 @@ exports.Members =
   },
   {
     name: '美園千花',
-    roma: 'misonochika',
+    roma: 'misonotika',
     traning: '筋力',
     skills: ['キャッチャー', '意外性'],
     special_skills: ['球界の頭脳'],
@@ -34969,7 +35387,7 @@ exports.Members =
   },
   {
     name: '小嵐リョウ',
-    roma: 'koarashiryo',
+    roma: 'koarasiryo',
     traning: '守備',
     skills: ['チャンス', '走塁', 'バント', '守備職人'],
     special_skills: ['魔術師'],
@@ -34989,7 +35407,7 @@ exports.Members =
   },
   {
     name: '大西=ハリソン',
-    roma: 'onishiharison',
+    roma: 'onisiharison',
     traning: 'スタミナ',
     skills: ['ポーカーフェイス'],
     special_skills: ['鉄椀'],
@@ -35009,7 +35427,7 @@ exports.Members =
   },
   {
     name: '鋼毅',
-    roma: 'haganetuyoshi',
+    roma: 'haganetuyosi',
     traning: 'スタミナ',
     skills: ['ノビ', '対ピンチ'],
     special_skills: ['怪童', 'アーチスト'],
@@ -35019,7 +35437,7 @@ exports.Members =
   },
   {
     name: '嵐丸士郎',
-    roma: 'arashimarushiro',
+    roma: 'arasimarusiro',
     traning: '精神',
     skills: ['対強打者'],
     special_skills: ['鉄人'],
@@ -35049,7 +35467,7 @@ exports.Members =
   },
   {
     name: '太刀川広巳',
-    roma: 'tachikawahiromi',
+    roma: 'tatikawahiromi',
     traning: '変化球',
     skills: ['重い球', 'ノビ', '尻上がり', '対強打者'],
     special_skills: ['怪物脅威'],
@@ -35089,7 +35507,7 @@ exports.Members =
   },
   {
     name: '小豪月剛',
-    roma: 'syogotsukitakeshi',
+    roma: 'syogotukitakesi',
     traning: '筋力',
     skills: [],
     special_skills: ['ドクターK', '一球入魂'],
@@ -35099,7 +35517,7 @@ exports.Members =
   },
   {
     name: '中之島幸宏',
-    roma: 'nakanoshimayukihiro',
+    roma: 'nakanosimayukihiro',
     traning: '打撃',
     skills: ['チャンス', '盗塁', 'アベレージヒッター', '流し打ち'],
     special_skills: ['電光石火'],
@@ -35169,7 +35587,7 @@ exports.Members =
   },
   {
     name: '渋谷秀喜',
-    roma: 'shibutanihideki',
+    roma: 'sibutanihideki',
     traning: '筋力',
     skills: ['サヨナラ男', '意外性'],
     special_skills: ['伝説のサヨナラ男'],
@@ -35199,7 +35617,7 @@ exports.Members =
   },
   {
     name: '九十九宇宙',
-    roma: 'tsukumotakaoki',
+    roma: 'tukumotakaoki',
     traning: '肩力',
     skills: ['流し打ち', 'ハイボールヒッター', 'レーザービーム'],
     special_skills: ['高速レーザー'],
